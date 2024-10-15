@@ -1,0 +1,22 @@
+name: 'Make UnityPackage'
+description: 'Builds a UnityPackage from a given directory'
+author: 'Fox_score'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  path:
+    description: 'The directory that should be converted into a UnityPackage'
+    required: true
+  saveTo:
+    description: 'Where the .unitypackage file should be saved to'
+    required: true
+  icon:
+    description: 'Optional path to the icon the UnityPackage should display in the Import window'
+    required: false
+  prefix:
+    description: 'A text that should be put infront of any files path. If your repository is the package itself, the prefix could be something like `Packages/com.example/`'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

@@ -1,0 +1,27 @@
+{
+    "name": "make-unitypackage",
+    "version": "1.0.0",
+    "description": "Builds a UnityPackage from a given directory",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "npx ncc build index.ts -o dist --source-map --license licenses.txt"
+    },
+    "author": {
+        "name": "Fox_score",
+        "email": "felixkaiser2000@protonmail.com",
+        "url": "https://foxscore.dev"
+    },
+    "license": "GPL-3.0-or-later",
+    "dependencies": {
+        "@actions/core": "^1.11.1",
+        "glob": "^11.0.0",
+        "yaml": "^2.6.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.7.5",
+        "@vercel/ncc": "^0.38.2",
+        "eslint": "^8.47.0",
+        "eslint-config-google": "^0.14.0",
+        "typescript": "^5.6.3"
+    }
+}
