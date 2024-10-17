@@ -6,16 +6,16 @@ branding:
   color: 'blue'
 inputs:
   path:
-    description: 'The directory that should be converted into a UnityPackage'
+    description: 'The directory that should be converted into a UnityPackage.'
     required: true
   saveTo:
-    description: 'Where the .unitypackage file should be saved to'
+    description: 'Where the .unitypackage file should be saved to.'
     required: true
   icon:
-    description: 'Optional path to the icon the UnityPackage should display in the Import window'
+    description: 'Path to the icon file. Must be a png.'
     required: false
   prefix:
-    description: 'A text that should be put infront of any files path. If your repository is the package itself, the prefix could be something like `Packages/com.example/`'
+    description: 'A text that should be put infront of any files path. If your repository is the package itself, the prefix could be something like `Packages/com.example/`. If your repository is an entire Unity project, the prefix should be left out / empty.'
     required: false
 runs:
   using: 'node20'
