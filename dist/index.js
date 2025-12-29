@@ -11867,7 +11867,7 @@ for (let file of files) {
 }
 // Make archtemp.tar
 (0, core_1.info)('Building tar archive...');
-(0, child_process_1.execSync)(`tar -cf /tmp/archtemp.tar ${tmpPath}`);
+(0, child_process_1.execSync)(`tar -cf /tmp/archtemp.tar -C ${tmpPath} .`);
 // Make gz file
 (0, core_1.info)('Compressing archive...');
 const previousPath = process.cwd();

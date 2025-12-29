@@ -1,5 +1,8 @@
 # Make UnityPackage
 
+> [!CAUTION]
+> If you were using `v1`, make sure to upgrade to `v1.1`, as there was a critical bug that made `.unitypackage` files uninstallable.
+
 ## Licensing
 
 - Licensed under [GNU GPL v3 or later](https://spdx.org/licenses/GPL-3.0-or-later.html).

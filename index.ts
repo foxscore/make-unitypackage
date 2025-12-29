@@ -50,7 +50,7 @@ for (let file of files) {
 
 // Make archtemp.tar
 info('Building tar archive...')
-execSync(`tar -cf /tmp/archtemp.tar ${tmpPath}`)
+execSync(`tar -cf /tmp/archtemp.tar -C ${tmpPath} .`)
 
 // Make gz file
 info('Compressing archive...')
