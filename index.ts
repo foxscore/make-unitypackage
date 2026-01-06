@@ -40,6 +40,7 @@ for (let file of files) {
         debug(`File '${file}' does not have a .meta file - Skipping`)
         continue;
     }
+    debug(`\tIncluding file '${file}'...`)
     let lines = readFileSync(`${file}.meta`, { encoding: 'utf-8' }).split('\n');
     const guid = lines.find(line => line.startsWith('guid: '))!.replace('guid: ', '').trim();
     mkdirSync(`${tmpPath}/${guid}`);

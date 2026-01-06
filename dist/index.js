@@ -11858,6 +11858,7 @@ for (let file of files) {
         (0, core_1.debug)(`File '${file}' does not have a .meta file - Skipping`);
         continue;
     }
+    (0, core_1.debug)(`\tIncluding file '${file}'...`);
     let lines = (0, fs_1.readFileSync)(`${file}.meta`, { encoding: 'utf-8' }).split('\n');
     const guid = lines.find(line => line.startsWith('guid: ')).replace('guid: ', '').trim();
     (0, fs_1.mkdirSync)(`${tmpPath}/${guid}`);
