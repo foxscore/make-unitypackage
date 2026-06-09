@@ -11852,16 +11852,18 @@ if (iconPath !== undefined && iconPath !== null && iconPath !== "") {
 }
 // Copy files
 (0, core_1.info)('Copying files...');
-let files = (0, glob_1.globSync)(`${path}/**`, { nodir: true, ignore: '**/*.meta' });
+let files = (0, glob_1.globSync)(`${path}/**`, { ignore: '**/*.meta' });
 for (let file of files) {
     if (!(0, fs_1.existsSync)(`${file}.meta`)) {
-        (0, core_1.debug)(`File '${file}' does not have a .meta file - Skipping`);
+        (0, core_1.debug)(`Path '${file}' does not have a .meta file - Skipping`);
         continue;
     }
     let lines = (0, fs_1.readFileSync)(`${file}.meta`, { encoding: 'utf-8' }).split('\n');
     const guid = lines.find(line => line.startsWith('guid: ')).replace('guid: ', '').trim();
     (0, fs_1.mkdirSync)(`${tmpPath}/${guid}`);
-    (0, fs_1.copyFileSync)(file, `${tmpPath}/${guid}/asset`);
+    if ((0, fs_1.statSync)(file).isFile()) {
+        (0, fs_1.copyFileSync)(file, `${tmpPath}/${guid}/asset`);
+    }
     (0, fs_1.copyFileSync)(`${file}.meta`, `${tmpPath}/${guid}/asset.meta`);
     (0, fs_1.writeFileSync)(`${tmpPath}/${guid}/pathname`, `${prefix}${file}`);
 }

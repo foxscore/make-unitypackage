@@ -1,5 +1,5 @@
 import { debug, getInput, info, setFailed } from "@actions/core";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "fs";
 import { exit } from "process";
 import { globSync } from "glob";
 import { execSync } from "child_process";
@@ -34,16 +34,18 @@ if (iconPath !== undefined && iconPath !== null && iconPath !== "") {
 
 // Copy files
 info('Copying files...')
-let files = globSync(`${path}/**`, { nodir: true, ignore: '**/*.meta' });
+let files = globSync(`${path}/**`, { ignore: '**/*.meta' });
 for (let file of files) {
     if (!existsSync(`${file}.meta`)) {
-        debug(`File '${file}' does not have a .meta file - Skipping`)
+        debug(`Path '${file}' does not have a .meta file - Skipping`)
         continue;
     }
     let lines = readFileSync(`${file}.meta`, { encoding: 'utf-8' }).split('\n');
     const guid = lines.find(line => line.startsWith('guid: '))!.replace('guid: ', '').trim();
     mkdirSync(`${tmpPath}/${guid}`);
-    copyFileSync(file, `${tmpPath}/${guid}/asset`);
+    if (statSync(file).isFile()) {
+        copyFileSync(file, `${tmpPath}/${guid}/asset`);
+    }
     copyFileSync(`${file}.meta`, `${tmpPath}/${guid}/asset.meta`);
     writeFileSync(`${tmpPath}/${guid}/pathname`, `${prefix}${file}`);
 }

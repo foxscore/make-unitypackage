@@ -1,7 +1,7 @@
 # Make UnityPackage
 
 > [!CAUTION]
-> If you were using `v1`, make sure to upgrade to `v1.1`, as there was a critical bug that made `.unitypackage` files uninstallable.
+> If you were using `v1`, make sure to upgrade to `v1.2`, as there was a critical bug that made `.unitypackage` files uninstallable.
 
 ## Licensing
 
